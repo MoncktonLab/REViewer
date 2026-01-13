@@ -41,7 +41,7 @@ endif()
 
 ExternalProject_Add(Boost
 	BUILD_IN_SOURCE YES
-	URL https://boostorg.jfrog.io/artifactory/main/release/1.73.0/source/boost_1_73_0.tar.bz2
+	URL https://archives.boost.io/release/1.73.0/source/boost_1_73_0.tar.bz2
 	PATCH_COMMAND ${BOOST_PATCH_COMMAND}
 	CONFIGURE_COMMAND ./bootstrap.sh --prefix=${installDir}
 	BUILD_COMMAND ./b2 install -j8 --with-filesystem --with-system --with-program_options link=static ${B2_OPTIONS}
@@ -58,7 +58,7 @@ ExternalProject_Add(spdlog
 
 
 ExternalProject_Add(catch2
-	URL https://github.com/catchorg/Catch2/archive/refs/tags/v2.12.4.tar.gz
+	URL https://github.com/catchorg/Catch2/archive/refs/tags/v2.13.5.tar.gz
 	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${installDir}
 		-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
 		-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
