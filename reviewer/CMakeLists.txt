@@ -52,6 +52,9 @@ add_library(Metrics
 target_include_directories(Metrics PUBLIC ${CMAKE_SOURCE_DIR})
 target_link_libraries(Metrics PUBLIC Core)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBDEFLATE REQUIRED libdeflate)
+
 add_executable(REViewer
         app/REViewer.cpp
         app/Workflow.cpp app/Workflow.hh
@@ -88,8 +91,9 @@ target_link_libraries(REViewer PUBLIC
         ${CURL_LIBRARIES}
         ZLIB::ZLIB
         BZip2::BZip2
-#        fmt::fmt   # If you get linker errors about fmt stuff during compilation, comment this back in.
-        Threads::Threads)
+        Threads::Threads
+        ${LIBDEFLATE_LIBRARIES}
+)
 
 
 install(TARGETS REViewer RUNTIME DESTINATION bin)
